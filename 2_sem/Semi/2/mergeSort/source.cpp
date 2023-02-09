@@ -100,13 +100,6 @@ double avg(const std::vector<double>& arr)
 
 int main()
 {
-	/*
-	Array a {5, 3, 8, 3, 6, 9, 1, 6, 1, 3, 2, 1};
-	mergeSort(a.begin(), a.end());
-	for(auto x : a)
-		std::cout<<x<<" ";
-	std::cout<<std::endl;
-	*/
 	std::random_device rd;
 	std::mt19937 g(rd());
 	
@@ -131,7 +124,6 @@ int main()
 			times[tries] = dur.count();
 		}
 		double time = avg(times);
-		//f<<fixed<<std::setprecision(25)<<a<<endl;
 		f1 << n << " " << std::fixed << std::setprecision(15) << time << "\n";
 	}
 	
@@ -157,7 +149,6 @@ int main()
 			times[tries] = dur.count();
 		}
 		double time = avg(times);
-		//f<<fixed<<std::setprecision(25)<<a<<endl;
 		f2 << n << " " << std::fixed << std::setprecision(15) << time << "\n";
 	}
 	
