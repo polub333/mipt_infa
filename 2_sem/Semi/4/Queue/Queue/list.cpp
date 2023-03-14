@@ -56,3 +56,12 @@ Data List::front()
 {
     return head->data;
 }
+
+void List::Clear()
+{
+    while(head != nullptr && head->next != nullptr){
+        auto tmp = head->next;
+        delete head;
+        head = tmp;
+    }
+}

@@ -30,8 +30,13 @@ void VectorQueue::MoveHeadToTail()
     u64 hSize = head.Size();
     tail.Realloc(hSize);
     for(u64 i = 0; i < hSize; ++i){
-        //tail[i] = head[head.Size() - 1];
         tail.PushBack(head[head.Size() - 1]);
         head.PopBack();
     }
+}
+
+void VectorQueue::Clear()
+{
+    head.Clear();
+    tail.Clear();
 }

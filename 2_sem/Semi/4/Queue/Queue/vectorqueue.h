@@ -12,9 +12,9 @@ class VectorQueue
 public:
     VectorQueue();
     VectorQueue(u64 n);
-
     void PushBack(i64 elem);
     i64 PopFront();
+    void Clear();
 private:
     void MoveHeadToTail();
     Vector head;

@@ -23,6 +23,7 @@ struct List
     void PopBack();
     void PopFront();
     Data front();
+    void Clear();
 };
 
 #endif // LIST_H

@@ -13,9 +13,9 @@ class ListQueue
 public:
     ListQueue();
     ListQueue(u64 n);
-
     void PushBack(i64 elem);
     i64 PopFront();
+    void Clear();
 private:
     List data;
 };

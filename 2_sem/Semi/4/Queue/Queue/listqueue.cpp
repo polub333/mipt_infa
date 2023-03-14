@@ -21,3 +21,8 @@ i64 ListQueue::PopFront()
     data.PopFront();
     return elem;
 }
+
+void ListQueue::Clear()
+{
+    data.Clear();
+}

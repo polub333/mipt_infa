@@ -15,6 +15,7 @@ public:
 
     void PushBack(i64 elem);
     i64 PopFront();
+    void Clear();
 private:
     void Realloc();
     Vector data;

@@ -46,3 +46,11 @@ void CircularBufferQueue::Realloc()
     tail = oldSize;
     head = 0;
 }
+
+void CircularBufferQueue::Clear()
+{
+    data.Clear();
+    data.Resize(1);
+    head = 0;
+    tail = 0;
+}

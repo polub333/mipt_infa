@@ -1,4 +1,5 @@
 #include "vector.h"
+#include <iostream>
 
 Vector::Vector()
 {
@@ -22,6 +23,50 @@ Vector::Vector(u64 n)
 Vector::~Vector()
 {
     delete[] data;
+}
+
+Vector::Vector(const Vector& v)
+{
+    size = v.Size();
+    reserved = v.Size();
+    data = new i64[reserved];
+    for (u64 i = 0; i < v.Size(); ++i){
+        data[i] = v.data[i];
+    }
+}
+
+Vector& Vector::operator=(const Vector& v)
+{
+    if(this == &v){
+        return *this;
+    }
+    Vector tmp(v);
+    std::swap(size, tmp.size);
+    std::swap(reserved, tmp.reserved);
+    std::swap(data, tmp.data);
+    return *this;
+}
+
+Vector::Vector(Vector&& v)
+{
+    size = v.Size();
+    data = v.data;
+    reserved = v.reserved;
+    v.data = nullptr;
+    v.size = 0;
+    v.reserved = 0;
+}
+
+Vector& Vector::operator=(Vector&& v)
+{
+    if(this == &v){
+        return *this;
+    }
+    Vector tmp(std::move(v));
+    std::swap(size, tmp.size);
+    std::swap(reserved, tmp.reserved);
+    std::swap(data, tmp.data);
+    return *this;
 }
 
 void Vector::Realloc(u64 n)
@@ -63,8 +108,21 @@ void Vector::PopBack()
 void Vector::PushBack(i64 elem)
 {
     if(reserved <= size){
-        Realloc(2*reserved);
+        if(reserved == 0){
+            Realloc(1);
+        }
+        else{
+            Realloc(2*reserved);
+        }
     }
     data[size] = elem;
     ++size;
+}
+
+void Vector::Clear()
+{
+    size = 0;
+    reserved = 0;
+    delete[] data;
+    data = nullptr;
 }
