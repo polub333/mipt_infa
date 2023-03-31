@@ -15,8 +15,12 @@ public:
 };
 
 template <typename T>
+class WeakPtr;
+
+template <typename T>
 class SharedPtr
 {
+    friend class WeakPtr<T>;
 public:
     SharedPtr() : ptr(nullptr), counter(nullptr) {}
     SharedPtr(T* raw_ptr);
@@ -40,6 +44,7 @@ private:
 template<typename T>
 class WeakPtr
 {
+    friend class SharedPtr<T>;
 public:
     WeakPtr() = delete;
     WeakPtr(const SharedPtr<T>& rhs);

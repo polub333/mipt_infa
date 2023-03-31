@@ -196,10 +196,20 @@ std::ostringstream EvalSortStationAlg(std::istream& istrm)
     return res;
 }
 
+std::string ReverseString(std::string str)
+{
+    auto n = str.size();
+    std::string res(" ", n);
+    for(int i = n - 1; i >= 0; --i){
+        res[n - i - 1] = str[i];
+    }
+    return res;
+}
+
 Int EvalInfixNotation(std::istream& istrm)
 {
-    std::string postfixNotation = EvalSortStationAlg(istrm).str();
-    std::reverse(postfixNotation.begin(), postfixNotation.end());
-    std::istringstream prefixNotationISS(postfixNotation);
+    std::string postfixExpr = EvalSortStationAlg(istrm).str();
+    std::string prefixExpr = ReverseString(postfixExpr);
+    std::istringstream prefixNotationISS(prefixExpr);
     return EvalRevPolishExpr(prefixNotationISS);
 }

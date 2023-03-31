@@ -2,7 +2,6 @@
 #include "catch.hpp"
 #include <string>
 
-
 Int EvalString(const std::string& s) {
   std::istringstream iss(s);
   return EvalInfixNotation(iss);
