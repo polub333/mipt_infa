@@ -1,14 +1,16 @@
 #ifndef FIELD_H
 #define FIELD_H
 
+#include <vector>
+
 #include "types.h"
 #include "cell.h"
 
 class Field
 {
 private:
-    i16 n;
-    i16 m;
+
+
 public:
     Field() = delete;
     Field(const Field&) = delete;
@@ -16,12 +18,17 @@ public:
     Field(Field&&) = delete;
     Field&& operator=(Field&&) = delete;
 
-    Field(i16 n, i16 m);
+    Field(i16 _n, i16 _m);
     ~Field();
 
     void Tick();
     void Render();
-    Cell** cells;
+    std::vector<std::vector<Cell*>> cells;
+
+    Cell* GetCellByCoords(Coords coords);
+
+    i16 height;
+    i16 width;
 };
 
 #endif // FIELD_H

@@ -2,14 +2,18 @@
 #define PREDATOR_H
 
 #include "animal.h"
-#include "strategy.h"
+#include "behaviour.h"
+
+class SimManager;
 
 class Predator: public Animal
 {
 public:
-    void Tick() override;
-    Strategy* GetStrategies();
-    Animal* Clone() override;
+    Predator(SimManager* mgr, Cell* _cell);
+    Predator(SimManager* mgr, Cell* cell, i16 satiety);
+    void GetBehaviours() override;
+    void Clone(Cell* cell) override;
+    void Render() override;
 };
 
 #endif // PREDATOR_H
